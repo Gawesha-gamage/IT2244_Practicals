@@ -1,2 +1,2 @@
 # IT2244_Practicals
-Operating Systems
+Check all the Readme files inside the folders
