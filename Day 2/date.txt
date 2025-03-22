@@ -1,0 +1,39 @@
+::@echo off :-turn off command echoing to prevent displaying commands as they execute:
+::set /p :-get user input
+::set /a :-to do arithmatic operations
+::%age% :-get the stored value in variable age
+::pause :-prevent the window closing immediately
+::echo :-to dispaly text
+
+::date -->fri 03/22/2025 when we want to find the month there are we use
+::4,2 beacuse fri 03 starts from 4 and month length is two we need to read unti 02 nums
+
+
+
+@echo OFF
+set month=%date:~4,2%
+echo Your month is %month%
+
+set Day=%date:~7,2%
+echo Your Day is %Day%
+
+set weekday=%date:~0,3%
+echo Your day is %weekday%
+
+echo %day%
+
+if "%month%"=="01" set monthName=January
+if "%month%"=="02" set monthName=February
+if "%month%"=="03" set monthName=March
+if "%month%"=="04" set monthName=April
+if "%month%"=="05" set monthName=May
+if "%month%"=="06" set monthName=June
+if "%month%"=="07" set monthName=July
+if "%month%"=="08" set monthName=August
+if "%month%"=="09" set monthName=September
+if "%month%"=="10" set monthName=October
+if "%month%"=="11" set monthName=November
+if "%month%"=="12" set monthName=December
+
+echo The current month is %monthName%.
+pause

@@ -1,0 +1,10 @@
+::@echo off :-turn off command echoing to prevent displaying commands as they execute:
+::set /p :-get user input
+::set /a :-to do arithmatic operations
+::%age% :-get the stored value in variable age
+::pause :-prevent the window closing immediately
+@echo off
+set/p birthyear=Enter your birthyear:
+set/a age=%date:~ 10,4% -%birthyear%
+echo age:%age% yearold
+pause
