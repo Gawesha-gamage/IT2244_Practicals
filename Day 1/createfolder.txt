@@ -1,0 +1,24 @@
+::mkdir criteria :-to create a new folder
+::cd :-change the current directory
+::mkdir file1 :-create new folder --> folder1 inside criteria_1
+::cd.. :-move back to present directory
+mkdir criteria_1  
+cd criteria_1
+mkdir file1
+mkdir file2
+mkdir file3
+mkdir file4
+cd..
+mkdir criteria_2
+cd criteria_2
+mkdir file1
+mkdir file2
+cd..
+mkdir criteria_3
+cd criteria_3
+mkdir file1
+mkdir file2
+mkdir file3
+cd..
+
+

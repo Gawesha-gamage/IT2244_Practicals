@@ -1,0 +1,10 @@
+::@echo off:- turn off command echoing to prevent displaying commands as they execute
+@echo off
+:: display the current logged-in user's username
+echo username:%username% 
+::time:-display or can change system time
+time
+::color:- change the color of cmd
+color A
+::pause :-prevent the window closing immediately
+pause
