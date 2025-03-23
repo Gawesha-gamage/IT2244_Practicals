@@ -1,0 +1,199 @@
+::enter username
+login as: 2021ict28
+
+::enter the password
+2021ict28@172.16.140.150's password:
+
+::ls is stand for list use to list the content and lh is long listing format
+::it tells to display the content in long format
+1)  ls -lh
+
+::touch is use to create an empty file which is not exist or update
+::abc.tsv -here abc is the file name 
+::tsv means tab seperated values file (\t)
+2) touch abc.tsv
+
+::vi is used to create open and open to editing
+::if the file does not exist new file will created according to the name
+3) vi abc.tsv
+
+::head displays the top part of the file
+::-2 specifiles the lines you want to display
+::abc is the file name and tsv is file name
+4) head -2 abc.tsv
+
+::cut is use to cut out the section from each line of a file
+::f means the filed or coloum 
+::1,3 refers to 1st column and 3rd column
+5) cut -f1,3 abc.tsv
+
+::tail use to display end of files
+::-4 says diplay last four lines
+6) tail -4 abc.tsv
+
+::It processes text files line by line and performs actions based on patterns you specify
+::awk '{print}' ->symply output all lines in the file without modification
+7) awk '{print}' abc.tsv
+
+::head -n3 abc.tsv ->diplays first three lines of the file
+::tail -n1 ->displays thired line of the file because head -n3 is passed to tail
+8) head -n3 abc.tsv | tail -n1
+
+::this will print thired column in the filelsf
+9) awk '{print $3}' abc.tsv
+
+::wc is referes to word count
+::l tells to count only the lines 
+10) wc -l abc.tsv
+
+:: head -n5 abc.tsv print first 5 line of the folder and passes it to 
+::next command and displays lines which contain bb
+11) head -n5 abc.tsv | grep 'bb'
+
+::more is use to view the content
+12) more abc.tsv
+
+::similar to more command but it has more features it allows you to view
+::the content of the file
+13) less abc.tsv
+
+::ls ->list the content directory 
+::l->display in long format 
+::t->sort according to modification time recently modificated file appers top
+::r->reverse the order it will dispaly oldered file first
+::grep will filter and only shows text that contain  abc
+14) ls -ltr
+ls -ltr | grep "abc.tsv"
+
+::ls -a ->list all content in current directory
+::grep will filter and only shows text that contain  abc
+15) ls -a 
+ls -a | grep "abc.tsv"
+
+::chmod 757 abc.tsv change the file permissions
+::chmod ->change mode
+::757 ->otal representation of the permission that you want to set for the file
+16)chmod 757 abc.tsv
+
+::find ->to search
+::.->current directory
+::-name option is used to search for files that match a specific name or pattern.
+17) find . -name "*.txt"
+
+
+::is used to extract specific fields from a file
+18) cut -d ',' -f 1,3 xyz.tsv > xyz1.tsv
+
+::get the number of columns
+19)awk -F ',' '{print NF; exit}' abc.tsv
+
+::cut first column and show
+20)cut -d ',' -f 1 abc.tsv
+
+::show first colum in tab seperated file
+21)cut -d $'\t' -f1 abc.tsv
+
+::after enter vi press "i" the can enter data after enter the data ctrl+s and shift+: and enter wq
+
+
+
+:: linux commands----------------------------------------------------------------------------------------------------
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+gawesha@DESKTOP-3N8K59U:~$ pwd
+/home/gawesha
+gawesha@DESKTOP-3N8K59U:~$ touch abc.tsv
+gawesha@DESKTOP-3N8K59U:~$ vi abc.tsv
+gawesha@DESKTOP-3N8K59U:~$ head abc.tsv
+aa      23      13      11
+bb      34      45      12
+cc      45      78      10
+dd      23      56      78
+ee      76      55      41
+gawesha@DESKTOP-3N8K59U:~$ head -2 abc.tsv
+aa      23      13      11
+bb      34      45      12
+gawesha@DESKTOP-3N8K59U:~$ tail -2 abc.tsv
+dd      23      56      78
+ee      76      55      41
+gawesha@DESKTOP-3N8K59U:~$ awk '{print}' abc.tsv
+aa      23      13      11
+bb      34      45      12
+cc      45      78      10
+dd      23      56      78
+ee      76      55      41
+gawesha@DESKTOP-3N8K59U:~$ cut -f1,3 abc.tsv
+aa      13
+bb      45
+cc      78
+dd      56
+ee      55
+gawesha@DESKTOP-3N8K59U:~$ tail -4 abc.tsv
+bb      34      45      12
+cc      45      78      10
+dd      23      56      78
+ee      76      55      41
+gawesha@DESKTOP-3N8K59U:~$ awk '{print $3}' abc.tsv
+13
+45
+78
+56
+55
+gawesha@DESKTOP-3N8K59U:~$ wc -l abc.tsv
+5 abc.tsv
+gawesha@DESKTOP-3N8K59U:~$ head -n3 abc.tsv | tail -n1
+cc      45      78      10
+gawesha@DESKTOP-3N8K59U:~$ wc -l abc.tsv
+5 abc.tsv
+gawesha@DESKTOP-3N8K59U:~$ head -n5 abc.tsv | grep 'aa'
+aa      23      13      11
+gawesha@DESKTOP-3N8K59U:~$ more abc.tsv
+aa      23      13      11
+bb      34      45      12
+cc      45      78      10
+dd      23      56      78
+ee      76      55      41
+gawesha@DESKTOP-3N8K59U:~$ less abc.tsv
+gawesha@DESKTOP-3N8K59U:~$ ls -ltr
+total 8
+-rw-r--r-- 1 gawesha gawesha 27 Mar 23 13:12 abc.csv
+-rw-r--r-- 1 gawesha gawesha 60 Mar 23 14:11 abc.tsv
+gawesha@DESKTOP-3N8K59U:~$ ls -ltr | grep "abc.tsv"
+-rw-r--r-- 1 gawesha gawesha 60 Mar 23 14:11 abc.tsv
+gawesha@DESKTOP-3N8K59U:~$ ls -a
+.              .bash_logout  .landscape   .profile  abc.tsv
+..             .bashrc       .lesshst     .viminfo
+.bash_history  .cache        .motd_shown  abc.csv
+gawesha@DESKTOP-3N8K59U:~$ ls -a | grep "abc.tsv"
+abc.tsv
+gawesha@DESKTOP-3N8K59U:~$ chmod 757 abc.tsv
+gawesha@DESKTOP-3N8K59U:~$ find . -name "*.txt"
+gawesha@DESKTOP-3N8K59U:~$ cut -d ',' -f 1,3 abc.tsv>abc1.tsv
+gawesha@DESKTOP-3N8K59U:~$ more abc1.tsv
+aa      23      13      11
+bb      34      45      12
+cc      45      78      10
+dd      23      56      78
+ee      76      55      41
+gawesha@DESKTOP-3N8K59U:~$ awk -F ',' '{print $1}' abc.tsv
+aa      23      13      11
+bb      34      45      12
+cc      45      78      10
+dd      23      56      78
+ee      76      55      41
+gawesha@DESKTOP-3N8K59U:~$ awk -F ',' '{print NF; exit}' abc.tsv
+1
+gawesha@DESKTOP-3N8K59U:~$ cut -d ',' -f 1 abc.tsv
+aa      23      13      11
+bb      34      45      12
+cc      45      78      10
+dd      23      56      78
+ee      76      55      41
+gawesha@DESKTOP-3N8K59U:~$ cut -d $'\t' -f1 abc.tsv
+aa
+bb
+cc
+dd
+ee
+gawesha@DESKTOP-3N8K59U:~$
