@@ -1,0 +1,25 @@
+::echo "who are you"
+::read name
+::echo "Enter number 1"
+::read x
+::echo "Enter number 2"
+::read y
+::echo "Enter number 3"
+::read z
+::sum=$(($x+$y+$z))
+::avg=$(($sum/3))
+::echo "Hi" $name
+::echo "Summation " $sum
+::echo "Average " $avg
+::create SH file
+::inputty type vi pro 1.sh
+@echo off
+set /p name ="enter your name"
+echo your name is:  %name% 
+set /p num1 ="enter number 1"
+set /p num2 ="enter number 2"
+set /p num3 ="enter number 3"
+
+set /a sum =%num1%+%num2%+%num3%
+echo sum is %sum%
+pause
