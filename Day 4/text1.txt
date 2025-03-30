@@ -1,0 +1,31 @@
+
+
+
+
+1. date +%d 
+   The day of the month as a two-digit number
+
+2. date +%A  
+   The full weekday name 
+
+3. date +%D
+    The date in `MM/DD/YY` 
+
+4.date +%a 
+   The abbreviated weekday name 
+
+5. date +%y
+   The year as a two-digit number
+
+6. date +%H  
+   The hour in 24-hour 
+
+
+date +%d
+date +%A
+date +%D
+date +%a
+date +%y
+date +%H
+
+date +%m

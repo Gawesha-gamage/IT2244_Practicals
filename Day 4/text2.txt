@@ -1,0 +1,22 @@
+::vi text1.sh----->create sh file
+
+//enter those line inside the file
+::echo "who are you"
+::read name
+::echo "Enter number 1"
+::read x
+::echo "Enter number 2"
+::read y
+::echo "Enter number 3"
+::read z
+::sum=$(($x+$y+$z))
+::avg=$(($sum/3))
+::echo "Hi" $name
+::echo "Summation " $sum
+::echo "Average " $avg
+
+::chmod 777 text.sh----->make file exe
+::./text.sh ------->get the file execution
+
+
+

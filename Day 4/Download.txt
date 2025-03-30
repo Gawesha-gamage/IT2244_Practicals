@@ -1,0 +1,30 @@
+
+@echo off
+:: Disables command echoing to keep the script output clean.
+
+echo Listing files older than 30 days in Downloads...
+:: Displays a message to inform the user that the script is processing files.
+
+forfiles /p "%USERPROFILE%\Downloads" /s /m *.* /d -30 > "%USERPROFILE%\Downloads\Download_Summary.txt"
+:: Uses the 'forfiles' command to search for files in the Downloads folder.
+:: /p "%USERPROFILE%\Downloads" - Specifies the path to the Downloads folder.
+:: /s - Searches all subdirectories.
+:: /m *.* - Matches all file types.
+:: /d -30 - Selects files modified more than 30 days ago.
+:: > "%USERPROFILE%\Downloads\Download_Summary.txt" - Redirects the output to a file.
+
+echo Summary saved successfully!
+:: Informs the user that the operation was successful.
+
+pause
+:: Pauses the script execution, so the user can see the message before the window closes.
+
+
+
+@echo off
+::echo listing files older than 30 days in Downloads...
+forfiles /p "%USERPROFILE%\Downloads" /s /m *.* /d -30
+::echo Saving summery to Download_Summary.txt...
+forfiles /p "%USERPROFILE%\Downloads" /s /m *.* /d -30 > "%USERPROFILE%\Downloads\Download_Summary.txt
+echo Summary saved successfully!
+pause
