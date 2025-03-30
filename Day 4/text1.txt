@@ -1,0 +1,9 @@
+
+date +%d
+date +%A
+date +%D
+date +%a
+date +%y
+date +%H
+
+date +%m
