@@ -1,0 +1,80 @@
+
+q1)codes for fibbonacci series
+
+echo "Q1 fibbonacci"
+let num
+echo "Enter the number :"
+read num
+a=0
+b=1
+for((i=0; i<num; i++))
+do
+echo $a
+echo ""
+
+c=$(($a+$b))
+a=$b
+b=$c
+
+done
+
+
+q2)code for find factorial of a number
+
+echo "factorial"
+echo "Enter the number "
+read num
+fact=1
+for((i=1; i<=num; i++))
+do
+fact=$(($fact*$i))
+done
+echo "Factorial of number:$fact"
+
+q3)multiples of tree up to 50
+
+echo "multiples of tree up to 50"
+num=50/3
+for((i=1; i<=num; i++))
+do
+
+mul=$((3*$i))
+echo $mul
+done
+
+output
+Q1 fibbonacci
+Enter the number :
+5
+0
+
+1
+
+1
+
+2
+
+3
+
+factorial
+Enter the number
+5
+Factorial of number:120
+multiples of tree up to 50
+3
+6
+9
+12
+15
+18
+21
+24
+27
+30
+33
+36
+39
+42
+45
+48
+[gawe@DESKTOP-3N8K59U ~]$ v
