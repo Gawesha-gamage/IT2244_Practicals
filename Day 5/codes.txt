@@ -1,0 +1,220 @@
+::vi avc.csv – Opens the file avc.csv in the vi text editor.
+[gawe@DESKTOP-3N8K59U ~]$ vi avc.csv
+
+::grep 'Engineering' avc.csv – Displays lines containing the word "Engineering" from the file.
+[gawe@DESKTOP-3N8K59U ~]$ grep 'Engineering' avc.csv
+
+102,Bob,25,50000,Engineering
+105,Eve,28,60000,Engineering
+108,Hank,32,68000,Engineering
+
+::head -5 avc.csv – Shows the first 5 lines of the file.
+[gawe@DESKTOP-3N8K59U ~]$ head -5 avc.csv
+
+ID,Name,Salary,Department
+101,Alice,0,70000,Data Science
+102,Bob,25,50000,Engineering
+103,Charlie,5,80000,Data Science
+104,David,40,90000,HR
+
+::tail -3 avc.csv – Shows the last 3 lines of the file.
+[gawe@DESKTOP-3N8K59U ~]$ tail -3 avc.csv
+109,Ivy,29,62000,Data Science
+110,Jack,38,71000,HR
+
+::more avc.csv – Views the file one screen at a time.
+[gawe@DESKTOP-3N8K59U ~]$ more avc.csv
+
+ID,Name,Salary,Department
+101,Alice,0,70000,Data Science
+102,Bob,25,50000,Engineering
+103,Charlie,5,80000,Data Science
+104,David,40,90000,HR
+105,Eve,28,60000,Engineering
+106,Frank,38,75000,HR
+107,Grace,27,72000,Data Science
+108,Hank,32,68000,Engineering
+109,Ivy,29,62000,Data Science
+110,Jack,38,71000,HR
+
+::awk -F, '{print $3}' avc.csv – Prints the 3rd comma-separated field (likely "Salary").
+[gawe@DESKTOP-3N8K59U ~]$ awk -F, '{print $3}' avc.csv
+Salary
+0
+25
+5
+40
+28
+38
+27
+32
+29
+38
+
+::cut -d, -f3 avc.csv – Similar to awk, extracts the 3rd field using comma as delimiter.
+[gawe@DESKTOP-3N8K59U ~]$ cut -d, -f3 avc.csv
+Salary
+0
+25
+5
+40
+28
+38
+27
+32
+29
+38
+
+::head -n3 avc.csv | tail -n1 – Displays the 3rd line by first getting top 3 lines, then the last of those.
+[gawe@DESKTOP-3N8K59U ~]$ head -n3 avc.csv | tail -n1
+
+102,Bob,25,50000,Engineering
+
+::echo $COLUMNS – Shows the width of the terminal in columns.
+[gawe@DESKTOP-3N8K59U ~]$ echo $COLUMNS
+64
+
+::cut -d, -f4 avc.csv – Extracts the 4th field (likely "Department" or Salary depending on structure).
+
+[gawe@DESKTOP-3N8K59U ~]$ cut -d, -f4 avc.csv
+Department
+70000
+50000
+80000
+90000
+60000
+75000
+72000
+68000
+62000
+71000
+
+::awk -F, '{print $2, $3}' avc.csv – Prints the 2nd and 3rd fields (e.g., Name and Salary).
+
+[gawe@DESKTOP-3N8K59U ~]$ awk -F, '{print $2, $3}' avc.csv
+
+Name Salary
+Alice 0
+Bob 25
+Charlie 5
+David 40
+Eve 28
+Frank 38
+Grace 27
+Hank 32
+Ivy 29
+Jack 38
+
+::awk -F, '{print $4}' avc.csv | sort – Prints the 4th field and sorts it alphabetically/numerically.
+
+[gawe@DESKTOP-3N8K59U ~]$ awk -F, '{print $4}' avc.csv | sort
+
+50000
+60000
+62000
+68000
+70000
+71000
+72000
+75000
+80000
+90000
+Department
+
+::sort -t',' -k4,4n avc.csv – Sorts the file numerically by the 4th field.
+
+[gawe@DESKTOP-3N8K59U ~]$ sort -t',' -k4,4n avc.csv
+
+ID,Name,Salary,Department
+102,Bob,25,50000,Engineering
+105,Eve,28,60000,Engineering
+109,Ivy,29,62000,Data Science
+108,Hank,32,68000,Engineering
+101,Alice,0,70000,Data Science
+110,Jack,38,71000,HR
+107,Grace,27,72000,Data Science
+106,Frank,38,75000,HR
+103,Charlie,5,80000,Data Science
+104,David,40,90000,HR
+
+::sort -t',' -k4,4nr avc.csv – Sorts the file in reverse numeric order by the 4th field.
+
+[gawe@DESKTOP-3N8K59U ~]$ sort -t',' -k4,4nr avc.csv
+
+104,David,40,90000,HR
+103,Charlie,5,80000,Data Science
+106,Frank,38,75000,HR
+107,Grace,27,72000,Data Science
+110,Jack,38,71000,HR
+101,Alice,0,70000,Data Science
+108,Hank,32,68000,Engineering
+109,Ivy,29,62000,Data Science
+105,Eve,28,60000,Engineering
+102,Bob,25,50000,Engineering
+
+ID,Name,Salary,Department
+
+::sort -t',' -k3,3nr avc.csv – Sorts the file in reverse numeric order by the 3rd field.
+
+[gawe@DESKTOP-3N8K59U ~]$ sort -t',' -k3,3nr avc.csv
+
+104,David,40,90000,HR
+106,Frank,38,75000,HR
+110,Jack,38,71000,HR
+108,Hank,32,68000,Engineering
+109,Ivy,29,62000,Data Science
+105,Eve,28,60000,Engineering
+107,Grace,27,72000,Data Science
+102,Bob,25,50000,Engineering
+103,Charlie,5,80000,Data Science
+
+101,Alice,0,70000,Data Science
+ID,Name,Salary,Department
+
+::sort -t',' -k3,3n avc.csv – Sorts the file numerically by the 3rd field.
+
+[gawe@DESKTOP-3N8K59U ~]$ sort -t',' -k3,3n avc.csv
+
+101,Alice,0,70000,Data Science
+ID,Name,Salary,Department
+103,Charlie,5,80000,Data Science
+102,Bob,25,50000,Engineering
+107,Grace,27,72000,Data Science
+105,Eve,28,60000,Engineering
+109,Ivy,29,62000,Data Science
+108,Hank,32,68000,Engineering
+106,Frank,38,75000,HR
+110,Jack,38,71000,HR
+104,David,40,90000,HR
+
+::sort -t',' -k4,4 -r avc.csv – Sorts the file in reverse (descending) order by the 4th field alphabetically.
+
+[gawe@DESKTOP-3N8K59U ~]$ sort -t',' -k4,4 -r avc.csv
+
+ID,Name,Salary,Department
+104,David,40,90000,HR
+103,Charlie,5,80000,Data Science
+106,Frank,38,75000,HR
+107,Grace,27,72000,Data Science
+110,Jack,38,71000,HR
+101,Alice,0,70000,Data Science
+108,Hank,32,68000,Engineering
+109,Ivy,29,62000,Data Science
+105,Eve,28,60000,Engineering
+102,Bob,25,50000,Engineering
+
+::sort -t',' -k2,2 -r avc.csv | sort -t',' -k4,4 -r avc.csv – Attempts two sorts: first by Name descending, then by Department descending.
+
+[gawe@DESKTOP-3N8K59U ~]$ sort -t',' -k2,2 -r avc.csv | sort -t',' -k4,4 -r avc.csv
+
+ID,Name,Salary,Department
+104,David,40,90000,HR
+103,Charlie,5,80000,Data Science
+106,Frank,38,75000,HR
+107,Grace,27,72000,Data Science
+110,Jack,38,71000,HR
+101,Alice,0,70000,Data Science
+108,Hank,32,68000,Engineering
+109,Ivy,29,62000,Data Science
+105,Eve,28,60000,Engineering
+102,Bob,25,50000,Engineering
