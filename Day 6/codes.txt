@@ -1,0 +1,64 @@
+
+
+These commands generally deal with file creation, permission setting, script execution, and text editing. Would you like to go deeper into any particular command or step?
+::`date` – Displays the current date and time.
+[gawe@DESKTOP-3N8K59U ~]$ date
+Tue Apr 29 13:33:25 +0530 2025
+
+::`date +%d` – Shows the current day of the month 
+[gawe@DESKTOP-3N8K59U ~]$ date +%d
+29
+::touch file.sh – Creates an empty file 
+[gawe@DESKTOP-3N8K59U ~]$ touch file.sh
+
+::vi file.sh` – Opens the file `file.sh` in the `vi` text editor.
+[gawe@DESKTOP-3N8K59U ~]$ vi file.sh
+
+::chmod 777 file.sh – Changes the permissions of `file.sh` to allow read, write, and execute for everyone.
+[gawe@DESKTOP-3N8K59U ~]$ chmod 777 file.sh
+
+::./file.sh – Executes the script `file.sh` in the current directory.
+[gawe@DESKTOP-3N8K59U ~]$ ./file.sh
+Enter Your name :
+gawesha
+Enter the Mark for subject :
+45
+Enter the Mark for subject2 :
+67
+Enter the Mark for subject3 :
+76
+
+[gawe@DESKTOP-3N8K59U ~]$ vi file.sh
+[gawe@DESKTOP-3N8K59U ~]$ vi abc.sh
+[gawe@DESKTOP-3N8K59U ~]$ chmod 777 abc.sh
+[gawe@DESKTOP-3N8K59U ~]$ ./abc.sh
+Enter a number :
+2
+Tuesday
+[gawe@DESKTOP-3N8K59U ~]$ vi acd.sh
+[gawe@DESKTOP-3N8K59U ~]$ chmod 777 acd.sh
+[gawe@DESKTOP-3N8K59U ~]$ ./acd.sh
+Enter the username :
+gawe
+User name is incorrect
+[gawe@DESKTOP-3N8K59U ~]$ ./asd.sh
+-bash: ./asd.sh: No such file or directory
+[gawe@DESKTOP-3N8K59U ~]$ ./acd.sh
+Enter the username :
+mino
+User name is incorrect
+[gawe@DESKTOP-3N8K59U ~]$ ./acd.sh
+Enter the username :
+Mino
+User name is Correct
+[gawe@DESKTOP-3N8K59U ~]$ vi pqr.sh
+[gawe@DESKTOP-3N8K59U ~]$ chmod 777 pqr.sh
+[gawe@DESKTOP-3N8K59U ~]$ ./pqr.sh
+Enter First number
+34
+Enter second number
+23
+Summation is : 34+23
+Substraction is : 34-23
+Division is :  34/23
+Multiplication is : 34*23
