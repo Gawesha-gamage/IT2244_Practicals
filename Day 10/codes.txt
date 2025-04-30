@@ -1,0 +1,31 @@
+
+
+read -p "Enter the first number (a): " a
+read -p "Enter the second number (b): " b
+read -p "Enter the third number (c): " c
+
+
+    local x=$1
+    local y=$2
+    while [ $y -ne 0 ]; do
+        local temp=$y
+        y=$(( x % y ))
+        x=$temp
+    done
+    echo $x
+}
+
+
+lcm() {
+    local x=$1
+    local y=$2
+    local gcd_val=$(gcd $x $y)
+    echo $(( (x * y) / gcd_val ))
+}
+
+
+gcd_ab=$(gcd $a $b)
+lcm_bc=$(lcm $b $c)
+
+echo "GCD of ($a, $b): $gcd_ab"
+echo "LCM of ($b, $c): $lcm_bc"
