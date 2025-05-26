@@ -1,176 +1,62 @@
-# MATLAB Code Repository
+1.Basic "Hello World" program
 
-This repository contains various MATLAB scripts demonstrating basic mathematical operations, matrix manipulations, and control structures such as loops and conditionals.
+<img width="866" alt="1" src="https://github.com/user-attachments/assets/25ee2dd0-a262-481e-8bd2-1b622a8ddf7c" />
 
-## Requirements
-- MATLAB application is required to run these scripts.
+2.Displaying an integer variable 
 
-## Included MATLAB Scripts
+<img width="778" alt="2" src="https://github.com/user-attachments/assets/42f06cea-b96a-460d-84e7-53e5f2c9e291" />
 
-### 1. Basic Arithmetic Operations
-```matlab
-% Define variables
-a = 5;
-b = 10;
+3.Assigning a new value to an existing variable
 
-% Addition
-c = a + b;
-% Multiplication
-d = a * b;
-% Division
-e = a / b;
-% Subtraction
-f = a - b;
-```
-**Output:**
-```
-c = 15
-d = 50
-e = 0.5000
-f = -5
-```
+<img width="872" alt="3" src="https://github.com/user-attachments/assets/a35adfed-989c-4152-a9b1-61f6a4c54e08" />
 
-### 2. Matrix Creation and Operations
-```matlab
-% Define Matrices
-A = [1 2 3];
-B = [4;5;6];
-C = [2 3 4;5 6 7;8 9 10];
+4.Copying the value of one variable to another
 
-% Size of matrix
-size_C = size(C);
-% Sum of matrix elements
-sum_C = sum(sum(C));
-% Column-wise and row-wise sums
-col_sum = sum(C,1);
-row_sum = sum(C,2);
-```
-**Output:**
-```
-size_C = [3 3]
-sum_C = 54
-col_sum = [15 18 21]
-row_sum = [9; 18; 27]
-```
+<img width="458" alt="4" src="https://github.com/user-attachments/assets/4bfaca6c-cd9d-45cb-b554-a780f2b79299" />
 
-### 3. Finding Min and Max Elements
-```matlab
-% Column-wise minimum
-min_col = min(C);
-% Minimum of whole matrix
-min_all = min(min(C));
-% Column-wise maximum
-max_col = max(C);
-% Maximum of whole matrix
-max_all = max(max(C));
-```
-**Output:**
-```
-min_col = [2 3 4]
-min_all = 2
-max_col = [8 9 10]
-max_all = 10
-```
+5.Declaring multiple variables in a single line
 
-### 4. Accessing Matrix Elements
-```matlab
-% Accessing specific elements
-second_element = C(2);
-first_row = C(1,:);
-first_column = C(:,1);
-last_element_first_row = C(1,end);
-```
-**Output:**
-```
-second_element = 5
-first_row = [2 3 4]
-first_column = [2; 5; 8]
-last_element_first_row = 4
-```
+<img width="736" alt="5" src="https://github.com/user-attachments/assets/073a2def-35b1-484e-82ba-eb490f100446" />
 
-### 5. Matrix Addition, Subtraction, and Multiplication
-```matlab
-A = [1 2 3 4;5 6 7 8;9 10 11 12;13 14 15 16];
-B = A; % Duplicate matrix
+6.Understanding data types and using sizeof to check memory size
 
-% Element-wise Addition and Subtraction
-sum_matrix = A + B;
-diff_matrix = A - B;
+<img width="462" alt="6" src="https://github.com/user-attachments/assets/006c7d40-40f7-4d5b-96e0-9c946c5a3bbc" />
 
-% Matrix Multiplication
-prod_matrix = A * B;
-```
-**Output:**
-```
-sum_matrix =
-  2  4  6  8
- 10 12 14 16
- 18 20 22 24
- 26 28 30 32
+7.Working with double-precision floating-point numbers
 
-diff_matrix =
-  0  0  0  0
-  0  0  0  0
-  0  0  0  0
-  0  0  0  0
+<img width="462" alt="7" src="https://github.com/user-attachments/assets/472b6415-a466-4848-a09c-6865a6a69d83" />
 
-prod_matrix =
-  90  100  110  120
- 202  228  254  280
- 314  356  398  440
- 426  484  542  600
-```
+8.Using floating-point numbers and formatting output
 
-### 6. Conditional Statements
-```matlab
-num = 4;
-if num > 0
-    disp('The Number Is Positive')
-else
-    disp('The Number Is Negative')
-end
-```
-**Output:**
-```
-The Number Is Positive
-```
+<img width="451" alt="8" src="https://github.com/user-attachments/assets/32e64cfa-3d29-46c6-9135-b33cd3cff0e5" />
 
-### 7. Checking Odd or Even Number
-```matlab
-if mod(num,2) == 0
-    disp('The Number Is Even')
-else
-    disp('The Number Is Odd')
-end
-```
-**Output:**
-```
-The Number Is Even
-```
+9.Character data type and ASCII representation
 
-### 8. While Loop: Printing Numbers 1 to 5
-```matlab
-a = 1;
-while a <= 5
-    disp (a)
-    a = a + 1;
-end
-```
-**Output:**
-```
-1
-2
-3
-4
-5
-```
+<img width="475" alt="9" src="https://github.com/user-attachments/assets/55c57a35-3563-4c2d-936d-49e88f132397" />
 
-## How to Run the Scripts
-1. Open MATLAB.
-2. Copy and paste the desired script into the MATLAB command window or save it as a `.m` file and run it.
-3. Observe the output in the command window.
 
-## Conclusion
-These MATLAB scripts demonstrate fundamental concepts such as arithmetic operations, matrix manipulation, conditional statements, and loops. They serve as an excellent introduction to MATLAB programming.
+10.Prompting the user to input an integer
+
+<img width="462" alt="10" src="https://github.com/user-attachments/assets/329eaa70-2e6e-4e21-ac2f-eed073af81c0" />
+
+11.Prompting the user to enter a character and a double
+
+<img width="455" alt="11" src="https://github.com/user-attachments/assets/d9b99186-7997-4802-8216-5ce223956bfc" />
+
+
+12.Taking multiple inputs together
+
+<img width="464" alt="12" src="https://github.com/user-attachments/assets/9a586e68-5e2e-46cd-ba28-4994f8b57f6d" />
+
+13.Using arithmetic operators in C
+
+<img width="473" alt="14" src="https://github.com/user-attachments/assets/a1afd801-82c8-4050-b2ab-93b125546986" />
+
+
+
+
+
+
+
 
 
