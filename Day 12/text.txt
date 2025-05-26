@@ -1,0 +1,235 @@
+
+
+1)
+
+
+#include<stdio.h>
+int main(){
+	printf("Hello world!");
+return 0;
+}
+
+
+
+
+
+ 
+
+2)Display the age(Integer value)
+
+#include<stdio.h>
+int main(){
+	int age=23;
+	printf("%d",age);
+	return 0;
+}
+
+
+
+
+%d / %i - integers
+%f / %F - float
+%lf - double
+%c - char
+$s - string
+
+
+
+
+3) assign new value for same variable
+
+#include<stdio.h>
+int main(){
+	int age=25;
+printf("%d",age);
+
+printf("C Progrmming");
+
+age=31;
+printf("\nNew age:%d",age);
+return 0;
+}
+
+
+
+
+04)
+
+#include<stdio.h>
+int main(){
+	int firstNumber=25;
+printf("first number%d",firstNumber);
+
+int secondNumber=firstNumber;
+printf("second number:%d",secondNumber);
+return 0;
+}
+
+
+
+
+
+05)
+
+// Declare multiple variables in single line
+
+#include<stdio.h>
+int main(){
+	int firstNumber,secondNumber=25;
+printf("first number%d",firstNumber);
+printf("second number%d",secondNumber);
+return 0;
+}
+
+
+
+
+
+
+06)
+
+// data types
+
+#include<stdio.h>
+int main(){
+	int age=25;
+printf("%d",age);
+printf("size: %zu", sizeof(age));
+return 0;
+}
+
+
+07)
+Double numbers
+
+#include<stdio.h>
+int main(){
+	double number=12.45;
+	printf("%lf",number); // 12.450000
+	// printf("%.2lf",number); // 12.450000
+return 0;
+}
+
+
+
+
+08)
+
+Floating numbers
+
+#include<stdio.h>
+int main(){
+	float number=10.9f;
+	printf("%f",number); // 10.900000
+	// printf(".1%f",number); // 10.9
+return 0;
+}
+
+
+
+
+09)
+
+char
+
+#include<stdio.h>
+int main(){
+	char gender='m';
+	printf("gender: %c",gender); 
+	printf("\n%d",gender);
+return 0;
+}
+
+
+
+
+10)
+
+//prompt user to insert integer values
+
+#include<stdio.h>
+int main(){
+	int age;
+	printf("Enter your age:"); 
+	printf("%d",age);
+	scanf("\n%d", &age);
+	
+	printf("\nAge=%d",age);
+return 0;
+}
+
+
+
+
+11)
+
+promptuser to enter char variables
+
+#include<stdio.h>
+int main(){
+	double num1;
+	char alpha;
+	printf("Enter your num1:"); 
+	scanf("%lf", &num1);
+	printf("\nNum1=%lf",num1);
+	
+	
+	printf("Enter your Char:"); 
+	scanf("%c", &alpha);
+	printf("\nAlpha=%c",alpha);
+return 0;
+}
+
+
+
+12)
+ Take multiple inputs together
+
+#include<stdio.h>
+int main(){
+	double num1;
+	char alpha;
+	printf("Enter your inputs:"); 
+	scanf("%lf %c", &num1,&alpha);
+	printf("%lf",num1);
+	printf("\n%c",alpha);
+return 0;
+}
+
+
+
+
+13)
+
+// Comments
+
+// - Single live comments  ctrl+/
+
+/* */ - multiple comments  ctrl+shift+/
+
+
+14)
+
+// Arithmetic operators
+
++
+-
+*
+/
+%  // reminder
+
+#include<stdio.h>
+int main(){
+	int num1;
+	int num2;
+	printf("Enter your numbers:"); 
+	scanf("%d %d", &num1,&num2);
+	
+	printf("Summation: %d",num1+num2);
+	printf("\nSubstraction: %d",num1-num2);
+	printf("\nMultiplication: %d",num1*num2);
+	printf("\nDivision: %lf",num1/num2);
+	printf("\nModule: %d",num1%num2);
+return 0;
+}
+
