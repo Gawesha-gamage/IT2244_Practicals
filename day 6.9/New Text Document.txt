@@ -1,0 +1,97 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+void calculate_area(char shape, double a, double b, double *area) {
+    switch (shape) {
+        case 'C': 
+            *area = 3.14159 * a * a;
+            break;
+        case 'T': 
+            *area = 0.5 * a * b;
+            break;
+        case 'S': 
+            *area = a * a;
+            break;
+        case 'R': 
+            *area = a * b;
+            break;
+        default:
+            *area = -1; 
+    }
+}
+
+int main() {
+    int pipe1[2]; 
+    int pipe2[2]; 
+
+    if (pipe(pipe1) == -1 || pipe(pipe2) == -1) {
+        perror("Pipe creation failed");
+        return 1;
+    }
+
+    pid_t pid = fork();
+
+    if (pid < 0) {
+        perror("Fork failed");
+        return 1;
+    }
+
+    if (pid > 0) { 
+        close(pipe1[0]); 
+        close(pipe2[1]); 
+
+        char shape;
+        double a, b = 0, area;
+
+       
+        printf("Enter shape (C: Circle, T: Triangle, S: Square, R: Rectangle): ");
+        scanf(" %c", &shape);
+        printf("Enter dimensions: ");
+        if (shape == 'C' || shape == 'S')
+            scanf("%lf", &a);
+        else
+            scanf("%lf %lf", &a, &b);
+
+        
+        write(pipe1[1], &shape, sizeof(shape));
+        write(pipe1[1], &a, sizeof(a));
+        write(pipe1[1], &b, sizeof(b));
+        close(pipe1[1]); 
+
+       
+        wait(NULL); 
+        read(pipe2[0], &area, sizeof(area));
+        close(pipe2[0]);
+
+        
+        if (area >= 0)
+            printf("Calculated Area: %.2f\n", area);
+        else
+            printf("Invalid shape!\n");
+    } else { 
+        close(pipe1[1]); 
+        close(pipe2[0]); 
+
+        char shape;
+        double a, b, area;
+
+      
+        read(pipe1[0], &shape, sizeof(shape));
+        read(pipe1[0], &a, sizeof(a));
+        read(pipe1[0], &b, sizeof(b));
+        close(pipe1[0]);
+
+       
+        calculate_area(shape, a, b, &area);
+
+        
+        write(pipe2[1], &area, sizeof(area));
+        close(pipe2[1]);
+
+        _exit(0);
+    }
+
+    return 0;
+}
