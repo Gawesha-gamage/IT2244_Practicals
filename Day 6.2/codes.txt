@@ -1,0 +1,381 @@
+
+
+
+//writer procees 1
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+
+#define SUM_SIZE 1024 
+
+int main() {
+    key_t key = ftok("shmfile", 30); // Generate unique key
+    int shmid = shmget(key, SUM_SIZE, IPC_CREAT | 0666); // Create shared memory
+    
+    if (shmid == -1) {
+        perror("shmget");
+        exit(1);
+    }
+
+    char *shmaddr = (char*) shmat(shmid, NULL, 0); // Attach to shared memory
+    if (shmaddr == (char*) -1) {
+        perror("shmat");
+        exit(1);
+    }
+
+    printf("Write Data: ");
+    fgets(shmaddr, SUM_SIZE, stdin); // Corrected argument
+
+    printf("Data written in memory: %s\n", shmaddr);
+
+    shmdt(shmaddr); // Detach shared memory
+
+    return 0;
+}
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+
+#define SUM_SIZE 1024 
+
+int main() {
+    key_t key = ftok("shmfile", 30); // Generate unique key
+    int shmid = shmget(key, SUM_SIZE, IPC_CREAT | 0666); // Create shared memory
+    
+    if (shmid == -1) {
+        perror("shmget");
+        exit(1);
+    }
+
+    char *shmaddr = (char*) shmat(shmid, NULL, 0); // Attach to shared memory
+    if (shmaddr == (char*) -1) {
+        perror("shmat");
+        exit(1);
+    }
+
+ 
+  
+    printf("Data read from memory: %s\n", shmaddr);
+
+    shmdt(shmaddr); // Detach shared memory
+	shmctl(shmid, IPC_RMID, NULL);
+
+    return 0;
+}
+
+
+
+
+------------------------------------------------------------------------------------------------------
+
+user going to input as 5,2 to parent proecess, parent sent 5,2 to shared memory
+shared memory sent(5,2) to child process. child process calculate factorial
+and return 5!, 2!.
+shared memory retiurn 5!, 2! to parent process. and parent process print nCr, nPr
+
+
+
+//parent process
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <unistd.h>  // Add this for sleep()
+
+#define SHM_SIZE 1024 
+
+int main() {
+    key_t key = ftok("shmfile", 65);
+    int shmid = shmget(key, SHM_SIZE, IPC_CREAT | 0666);
+
+    if (shmid == -1) {
+        perror("shmget");
+        exit(1);
+    }
+
+    int *shmaddr = (int*) shmat(shmid, NULL, 0);
+    if (shmaddr == (int*) -1) {
+        perror("shmat");
+        exit(1);
+    }
+
+    printf("Writing data to shared memory...\n");
+
+    sleep(2);  // No more warning!
+
+    printf("Finished writing!\n");
+
+    shmdt(shmaddr);
+    shmctl(shmid, IPC_RMID, NULL);
+
+    return 0;
+}
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+
+#define SHM_SIZE 1024
+
+int factorial(int n) {
+    int fact = 1;
+    for (int i = 1; i <= n; i++) {
+        fact *= i;
+    }
+    return fact;
+}
+
+int main() {
+    key_t key = ftok("shmfile", 65);
+    int shmid = shmget(key, SHM_SIZE, 0666);
+    
+    if (shmid == -1) {
+        perror("shmget");
+        exit(1);
+    }
+
+    int *shmaddr = (int*) shmat(shmid, NULL, 0);
+    if (shmaddr == (int*) -1) {
+        perror("shmat");
+        exit(1);
+    }
+
+    int n = shmaddr[0]; // Read n
+    int r = shmaddr[1]; // Read r
+
+    printf("Child Process: Received %d, %d from Shared Memory.\n", n, r);
+
+    // Compute factorials
+    shmaddr[2] = factorial(n); // Store 5!
+    shmaddr[3] = factorial(r); // Store 2!
+
+    printf("Child Process: Computed Factorials -> %d! = %d, %d! = %d\n", n, shmaddr[2], r, shmaddr[3]);
+
+    // Detach shared memory
+    shmdt(shmaddr);
+
+    return 0;
+}
+
+
+
+
+//writer procees 1
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+
+#define SUM_SIZE 1024 
+
+int main() {
+    key_t key = ftok("shmfile", 30); // Generate unique key
+    int shmid = shmget(key, SUM_SIZE, IPC_CREAT | 0666); // Create shared memory
+    
+    if (shmid == -1) {
+        perror("shmget");
+        exit(1);
+    }
+
+    char *shmaddr = (char*) shmat(shmid, NULL, 0); // Attach to shared memory
+    if (shmaddr == (char*) -1) {
+        perror("shmat");
+        exit(1);
+    }
+
+    printf("Write Data: ");
+    fgets(shmaddr, SUM_SIZE, stdin); // Corrected argument
+
+    printf("Data written in memory: %s\n", shmaddr);
+
+    shmdt(shmaddr); // Detach shared memory
+
+    return 0;
+}
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+
+#define SUM_SIZE 1024 
+
+int main() {
+    key_t key = ftok("shmfile", 30); // Generate unique key
+    int shmid = shmget(key, SUM_SIZE, IPC_CREAT | 0666); // Create shared memory
+    
+    if (shmid == -1) {
+        perror("shmget");
+        exit(1);
+    }
+
+    char *shmaddr = (char*) shmat(shmid, NULL, 0); // Attach to shared memory
+    if (shmaddr == (char*) -1) {
+        perror("shmat");
+        exit(1);
+    }
+
+ 
+  
+    printf("Data read from memory: %s\n", shmaddr);
+
+    shmdt(shmaddr); // Detach shared memory
+	shmctl(shmid, IPC_RMID, NULL);
+
+    return 0;
+}
+
+
+
+
+------------------------------------------------------------------------------------------------------
+
+user going to input as 5,2 to parent proecess, parent sent 5,2 to shared memory
+shared memory sent(5,2) to child process. child process calculate factorial
+and return 5!, 2!.
+shared memory retiurn 5!, 2! to parent process. and parent process print nCr, nPr
+
+
+//parent process
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <unistd.h>  // Add this for sleep()
+
+#define SHM_SIZE 1024 
+
+int main() {
+    key_t key = ftok("shmfile", 65);
+    int shmid = shmget(key, SHM_SIZE, IPC_CREAT | 0666);
+
+    if (shmid == -1) {
+        perror("shmget");
+        exit(1);
+    }
+
+    int *shmaddr = (int*) shmat(shmid, NULL, 0);
+    if (shmaddr == (int*) -1) {
+        perror("shmat");
+        exit(1);
+    }
+
+    printf("Writing data to shared memory...\n");
+
+    sleep(2);  // No more warning!
+
+    printf("Finished writing!\n");
+
+    shmdt(shmaddr);
+    shmctl(shmid, IPC_RMID, NULL);
+
+    return 0;
+}
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+
+#define SHM_SIZE 1024
+
+int factorial(int n) {
+    int fact = 1;
+    for (int i = 1; i <= n; i++) {
+        fact *= i;
+    }
+    return fact;
+}
+
+int main() {
+    key_t key = ftok("shmfile", 65);
+    int shmid = shmget(key, SHM_SIZE, 0666);
+    
+    if (shmid == -1) {
+        perror("shmget");
+        exit(1);
+    }
+
+    int *shmaddr = (int*) shmat(shmid, NULL, 0);
+    if (shmaddr == (int*) -1) {
+        perror("shmat");
+        exit(1);
+    }
+
+    int n = shmaddr[0]; // Read n
+    int r = shmaddr[1]; // Read r
+
+    printf("Child Process: Received %d, %d from Shared Memory.\n", n, r);
+
+    // Compute factorials
+    shmaddr[2] = factorial(n); // Store 5!
+    shmaddr[3] = factorial(r); // Store 2!
+
+    printf("Child Process: Computed Factorials -> %d! = %d, %d! = %d\n", n, shmaddr[2], r, shmaddr[3]);
+
+    // Detach shared memory
+    shmdt(shmaddr);
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
